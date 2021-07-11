@@ -1,0 +1,16 @@
+[Unit]
+Description=Prometheus exporter for adafruit sgp30 air quality sensor
+Documentation=https://github.com/fourstops/sgp30_exporter
+After=network.target
+
+[Service]
+User=pi
+Group=pi
+SyslogIdentifier=sgp30_exporter
+WorkingDirectory=/opt/sgp30_exporter
+ExecStart=python3 sgp30_exporter.py  
+KillSignal=SIGINT
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
